@@ -42,10 +42,10 @@ public class EpokRestApi {
      * @return an instance of java.lang.String
      */
     @GET
-    @Produces(MediaType.APPLICATION_XML)
-    public String getXml() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
+    public Response ping(){
+        return Response
+                .ok("ping")
+                .build();
     }
 
     /**

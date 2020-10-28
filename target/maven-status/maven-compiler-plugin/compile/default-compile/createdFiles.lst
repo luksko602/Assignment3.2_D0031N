@@ -1,5 +1,6 @@
 Epok\Course.class
 Epok\Module.class
+Ladok\LadokController.class
 StudentITS\Student.class
 Canvas\Grade.class
 Epok\EpokRestApi.class
@@ -7,8 +8,13 @@ com\mycompany\assignment3_d0031n\JAXRSConfiguration.class
 Canvas\CanvasController.class
 Canvas\Course.class
 com\mycompany\assignment3_d0031n\resources\JavaEE8Resource.class
+Ladok\Course.class
+Canvas\LadokRestApi.class
 Canvas\CanvasRestApi.class
+Ladok\Student.class
 StudentITS\StudentController.class
 StudentITS\StudentRestApi.class
 Canvas\Student.class
 Epok\EpokController.class
+Ladok\Module.class
+Ladok\Grade.class

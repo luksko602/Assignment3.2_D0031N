@@ -40,10 +40,10 @@ public class StudentRestApi {
      * @return an instance of java.lang.String
      */
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getJson() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
+    public Response ping(){
+        return Response
+                .ok("ping")
+                .build();
     }
 
     /**

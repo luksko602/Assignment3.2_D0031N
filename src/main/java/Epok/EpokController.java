@@ -47,4 +47,8 @@ public ArrayList getModules(String courseCode){
     }
      return null;
 }
+
+    public ArrayList<Course> getCourses() {
+        return courses;
+    }
 }

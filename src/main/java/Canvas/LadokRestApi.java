@@ -5,6 +5,7 @@
  */
 package Canvas;
 
+import java.util.ArrayList;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -16,27 +17,29 @@ import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import Ladok.LadokController;
+import Ladok.Grade;
 
 /**
  * REST Web Service
  *
  * @author Lukas
  */
-@Path("canvas")
+@Path("ladok")
 @RequestScoped
-public class CanvasRestApi {
+public class LadokRestApi {
 
     @Context
     private UriInfo context;
 
     /**
-     * Creates a new instance of CanvasRestApi
+     * Creates a new instance of LadokRestApi
      */
-    public CanvasRestApi() {
+    public LadokRestApi() {
     }
 
     /**
-     * Retrieves representation of an instance of Canvas.CanvasRestApi
+     * Retrieves representation of an instance of Ladok.LadokRestApi
      * @return an instance of java.lang.String
      */
     @GET
@@ -47,19 +50,18 @@ public class CanvasRestApi {
     }
 
     /**
-     * PUT method for updating or creating an instance of CanvasRestApi
+     * PUT method for updating or creating an instance of LadokRestApi
      * @param content representation for the resource
      */
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public void putJson(String content) {
     }
-    
-    @Path("{course}")
+    @Path("{course}/{module}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getCourseModules(@PathParam("course") String courseCode){
-         Course course = new CanvasController().getCourse(courseCode);
-         return Response.ok(course).build();
+    public Response getCourseModules(@PathParam("course") String courseCode, @PathParam("module") String module){
+         ArrayList<Grade> grades = new LadokController().getGrades(courseCode, module);
+         return Response.ok(grades).build();
     }
 }
