@@ -1,2 +1,6 @@
 com\mycompany\assignment3_d0031n\resources\JavaEE8Resource.class
+Epok\Course.class
+Epok\Module.class
+Epok\EpokController.class
+Epok\EpokRestApi.class
 com\mycompany\assignment3_d0031n\JAXRSConfiguration.class
