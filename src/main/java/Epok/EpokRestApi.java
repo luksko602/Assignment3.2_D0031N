@@ -5,6 +5,7 @@
  */
 package Epok;
 
+import java.util.ArrayList;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -14,6 +15,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -55,12 +57,20 @@ public class EpokRestApi {
     public void putXml(String content) {
     }
     
-       @Path("{course}")
+    @Path("/query")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCourseModulesQuery(@QueryParam("course") String course){
+         ArrayList<Module> modules = new EpokController().getModules(course);
+         return Response.ok(modules).build();
+    }
+    
+
+    @Path("{course}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCourseModules(@PathParam("course") String courseCode){
-        System.out.println("Parametern in är: " + courseCode);
-         Course course = new EpokController().getCourse(courseCode);
-         return Response.ok(course).build();
+         ArrayList<Module> modules = new EpokController().getModules(courseCode);
+         return Response.ok(modules).build();
     }
 }

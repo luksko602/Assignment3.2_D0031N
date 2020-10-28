@@ -41,7 +41,7 @@ public Course getCourse(String courseCode){
 }
 public ArrayList getModules(String courseCode){
      for(Course course: courses){
-        if (course.getCourseCode() == courseCode){
+        if (course.getCourseCode().equals(courseCode)){
             return course.getModules();
         }
     }
