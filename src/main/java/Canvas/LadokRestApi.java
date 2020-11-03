@@ -19,6 +19,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import Ladok.LadokController;
 import Ladok.Grade;
+import javax.ws.rs.FormParam;
+import javax.ws.rs.POST;
 
 /**
  * REST Web Service
@@ -70,7 +72,7 @@ public class LadokRestApi {
     @Path("/{pNmr}/{course}/{module}/{date}/{grade}")
     @Consumes("application/xml")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response regBetyg(
+    public Response regBetygPut(
             @PathParam("pNmr") String pNmr, 
             @PathParam("course") String courseCode, 
             @PathParam("module") String module,
@@ -87,4 +89,25 @@ public class LadokRestApi {
                             .build();
        }
 }
+    
+    @POST
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response regBetyg(
+            @FormParam("pNmr") String pNmr, 
+            @FormParam("course") String courseCode, 
+            @FormParam("module") String module,
+            @FormParam("date") String date,
+            @FormParam("grade") String grade){
+         
+        LadokController c = new LadokController();
+        Boolean res = c.regBetyg(pNmr, courseCode, module, date, grade);
+        if (res){
+            return Response.status(javax.ws.rs.core.Response.Status.OK).entity(new Message("Grade pushed successfully") {}).build();
+        }else{
+            return Response.status(javax.ws.rs.core.Response.Status.BAD_REQUEST)
+                             .entity(new Message("Student not found in module"))
+                             .build();
+          }
+    }
 }
