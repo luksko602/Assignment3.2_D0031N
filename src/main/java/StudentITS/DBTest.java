@@ -16,7 +16,8 @@ public class DBTest {
  
     public static void main(String[] args){
         DBController db = new DBController();
-        ArrayList<Grade> grad = db.getGrades("D0031N", "D0006");
+        ArrayList<Grade> grad = db.getGrades("D0031N", "0006");
+        System.out.println("Fanns inget");
         for (Grade g: grad){
             System.out.println(g.getpNmr());
             System.out.println(g.getGrade());

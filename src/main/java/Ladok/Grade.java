@@ -22,6 +22,14 @@ public class Grade {
         this.attested = false;
         
     }
+    
+     public Grade(String pNmr, String grade, String date, Boolean attested){
+        this.pNmr = pNmr;
+        this.grade = grade;
+        this.date = date;
+        this.attested = false;
+        
+    }
 
     public void setpNmr(String pNmr) {
         this.pNmr = pNmr;

@@ -19,6 +19,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import Ladok.LadokController;
 import Ladok.Grade;
+import StudentITS.DBController;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 
@@ -64,7 +65,8 @@ public class LadokRestApi {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCourseModules(@PathParam("course") String courseCode, @PathParam("module") String module){
-         ArrayList<Grade> grades = new LadokController().getGrades(courseCode, module);
+      //  ArrayList<Grade> grades = new DBController().getGrades(courseCode, module);
+        ArrayList<Grade> grades = new LadokController().getGrades(courseCode, module);
          return Response.ok(grades).build();
     }
     
