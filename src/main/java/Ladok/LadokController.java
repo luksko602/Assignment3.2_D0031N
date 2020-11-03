@@ -53,4 +53,13 @@ public class LadokController {
         }
         return null;
     }
+    
+    public boolean regBetyg(String pNmr, String kursKod,String modul, String date, String grade){
+        for (Course cor: courses){
+           if(cor.getCourseCode().equals(kursKod)){
+               return cor.regBetyg(pNmr,modul,date,grade);
+           }
+        }
+        return false;
+    }
 }

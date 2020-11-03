@@ -24,7 +24,7 @@ public class Course {
     public boolean setGrade(String pNmr, String grade, String date, String moduleCode){
        for(Module module: modules){
            if(module.getCode().equals(moduleCode)){
-               if(module.setGrade(pNmr, grade, date))
+               if(module.regBetyg(pNmr,date,grade))
                    return true;
            }
        }
@@ -38,6 +38,15 @@ public class Course {
             }
         }
         return null;
+    }
+    
+    public boolean regBetyg(String pNmr,String modul, String date, String grade){
+        for(Module mod: modules){
+            if (mod.getCode().equals(modul)){
+                return mod.regBetyg(pNmr,date,grade);
+            }
+        }
+        return false;
     }
     
     public void addGrade(int module, String pNmr){

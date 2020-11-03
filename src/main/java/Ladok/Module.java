@@ -37,7 +37,7 @@ public Module(String code){
         grades.add(new Grade(pNmr));
     }
     
-public boolean setGrade(String pNmr, String grade, String date){
+public boolean regBetyg(String pNmr, String date, String grade){
     for(Grade gradeList: grades){
         if (gradeList.getpNmr().equals(pNmr)){
             gradeList.setDate(date);

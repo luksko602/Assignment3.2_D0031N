@@ -57,6 +57,7 @@ public class LadokRestApi {
     @Consumes(MediaType.APPLICATION_JSON)
     public void putJson(String content) {
     }
+    
     @Path("{course}/{module}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -64,4 +65,26 @@ public class LadokRestApi {
          ArrayList<Grade> grades = new LadokController().getGrades(courseCode, module);
          return Response.ok(grades).build();
     }
+    
+    @PUT
+    @Path("/{pNmr}/{course}/{module}/{date}/{grade}")
+    @Consumes("application/xml")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response regBetyg(
+            @PathParam("pNmr") String pNmr, 
+            @PathParam("course") String courseCode, 
+            @PathParam("module") String module,
+            @PathParam("date") String date,
+            @PathParam("grade") String grade){
+      
+       LadokController c = new LadokController();
+       Boolean res = c.regBetyg(pNmr, courseCode, module, date, grade);
+       if (res){
+           return Response.status(javax.ws.rs.core.Response.Status.OK).entity(new Message("Grade pushed successfully") {}).build();
+       }else{
+           return Response.status(javax.ws.rs.core.Response.Status.BAD_REQUEST)
+                            .entity(new Message("Student not found in module"))
+                            .build();
+       }
+}
 }
