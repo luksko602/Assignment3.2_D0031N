@@ -20,5 +20,6 @@ Ladok\LadokController.class
 Canvas\Message.class
 Epok\EpokRestApi.class
 Canvas\Course.class
+Ladok\test.class
 StudentITS\StudentController.class
 StudentITS\StudentRestApi.class

@@ -65,9 +65,10 @@ public class LadokRestApi {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCourseModules(@PathParam("course") String courseCode, @PathParam("module") String module){
-      //  ArrayList<Grade> grades = new DBController().getGrades(courseCode, module);
-        ArrayList<Grade> grades = new LadokController().getGrades(courseCode, module);
-         return Response.ok(grades).build();
+        LadokController controller = new LadokController();
+        controller.readAll();
+        ArrayList<Grade> grades = controller.getGrades(courseCode, module);
+        return Response.ok(grades).build();
     }
     
     @PUT
@@ -81,9 +82,12 @@ public class LadokRestApi {
             @PathParam("date") String date,
             @PathParam("grade") String grade){
       
-       LadokController c = new LadokController();
-       Boolean res = c.regBetyg(pNmr, courseCode, module, date, grade);
+       LadokController controller = new LadokController();
+       controller.readAll();
+       Boolean res = controller.regBetyg(pNmr, courseCode, module, date, grade);
+       
        if (res){
+           controller.saveAll();
            return Response.status(javax.ws.rs.core.Response.Status.OK).entity(new Message("Grade pushed successfully") {}).build();
        }else{
            return Response.status(javax.ws.rs.core.Response.Status.BAD_REQUEST)
@@ -102,9 +106,11 @@ public class LadokRestApi {
             @FormParam("date") String date,
             @FormParam("grade") String grade){
          
-        LadokController c = new LadokController();
-        Boolean res = c.regBetyg(pNmr, courseCode, module, date, grade);
+        LadokController controller = new LadokController();
+        controller.readAll();
+        Boolean res = controller.regBetyg(pNmr, courseCode, module, date, grade);
         if (res){
+            controller.saveAll();
             return Response.status(javax.ws.rs.core.Response.Status.OK).entity(new Message("Grade pushed successfully") {}).build();
         }else{
             return Response.status(javax.ws.rs.core.Response.Status.BAD_REQUEST)

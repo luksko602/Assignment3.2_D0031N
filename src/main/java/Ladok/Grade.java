@@ -5,11 +5,13 @@
  */
 package Ladok;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Lukas
  */
-public class Grade {
+public class Grade implements Serializable{
     String pNmr;
     Boolean attested;
     String grade;

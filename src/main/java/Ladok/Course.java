@@ -5,13 +5,14 @@
  */
 package Ladok;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Lukas
  */
-public class Course {
+public class Course implements Serializable{
     ArrayList<Module> modules;
     String courseCode;
     
