@@ -11,28 +11,30 @@ package Epok;
  * @author Lukas
  */
 public class Module {
- String code;
- String name;
+ String value;
+ String text;
     
  public Module(String code, String name){
-     this.code = code;
-     this.name = name;
+     this.value = code;
+     this.text = name + " "+ code;
  }
 
-    public void setCode(String code) {
-        this.code = code;
+    public String getValue() {
+        return value;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getText() {
+        return text;
     }
 
-    public String getCode() {
-        return code;
+    public void setValue(String value) {
+        this.value = value;
     }
 
-    public String getName() {
-        return name;
+    public void setText(String text) {
+        this.text = text;
     }
+
+
 }
  

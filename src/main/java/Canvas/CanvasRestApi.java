@@ -5,6 +5,7 @@
  */
 package Canvas;
 
+import java.util.ArrayList;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -58,8 +59,8 @@ public class CanvasRestApi {
     @Path("{course}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getCourseModules(@PathParam("course") String courseCode){
-         Course course = new CanvasController().getCourse(courseCode);
-         return Response.ok(course).build();
+    public Response getCourseStudents(@PathParam("course") String courseCode){
+         ArrayList<Student> students = new CanvasController().getStudentsInCourse(courseCode);
+         return Response.ok(students).build();
     }
 }

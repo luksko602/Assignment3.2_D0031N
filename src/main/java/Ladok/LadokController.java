@@ -82,6 +82,7 @@ public class LadokController {
     }
     
     public ArrayList<Grade> getGrades(String courseCode, String moduleCode){
+        this.readAll();
         for(Course course: courses){
             if(course.getCourseCode().equals(courseCode)){
                  ArrayList<Grade> result = course.getGrades(moduleCode);
@@ -92,9 +93,12 @@ public class LadokController {
     }
     
     public boolean regBetyg(String pNmr, String kursKod,String modul, String date, String grade){
+         this.readAll();
         for (Course cor: courses){
            if(cor.getCourseCode().equals(kursKod)){
-               return cor.regBetyg(pNmr,modul,date,grade);
+               Boolean res = cor.regBetyg(pNmr,modul,date,grade);
+               this.saveAll();
+               return res;
            }
         }
         return false;

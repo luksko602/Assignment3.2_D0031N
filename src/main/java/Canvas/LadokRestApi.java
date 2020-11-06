@@ -66,7 +66,6 @@ public class LadokRestApi {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCourseModules(@PathParam("course") String courseCode, @PathParam("module") String module){
         LadokController controller = new LadokController();
-        controller.readAll();
         ArrayList<Grade> grades = controller.getGrades(courseCode, module);
         return Response.ok(grades).build();
     }
@@ -83,11 +82,9 @@ public class LadokRestApi {
             @PathParam("grade") String grade){
       
        LadokController controller = new LadokController();
-       controller.readAll();
        Boolean res = controller.regBetyg(pNmr, courseCode, module, date, grade);
        
        if (res){
-           controller.saveAll();
            return Response.status(javax.ws.rs.core.Response.Status.OK).entity(new Message("Grade pushed successfully") {}).build();
        }else{
            return Response.status(javax.ws.rs.core.Response.Status.BAD_REQUEST)
@@ -107,10 +104,8 @@ public class LadokRestApi {
             @FormParam("grade") String grade){
          
         LadokController controller = new LadokController();
-        controller.readAll();
         Boolean res = controller.regBetyg(pNmr, courseCode, module, date, grade);
         if (res){
-            controller.saveAll();
             return Response.status(javax.ws.rs.core.Response.Status.OK).entity(new Message("Grade pushed successfully") {}).build();
         }else{
             return Response.status(javax.ws.rs.core.Response.Status.BAD_REQUEST)
