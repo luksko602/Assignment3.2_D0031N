@@ -109,7 +109,7 @@ public class LadokRestApi {
             return Response.status(javax.ws.rs.core.Response.Status.OK).entity(new Message("Grade pushed successfully") {}).build();
         }else{
             return Response.status(javax.ws.rs.core.Response.Status.BAD_REQUEST)
-                             .entity(new Message("Student not found in module"))
+                             .entity(new Message(pNmr))
                              .build();
           }
     }

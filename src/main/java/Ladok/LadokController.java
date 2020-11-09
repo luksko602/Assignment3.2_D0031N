@@ -22,7 +22,8 @@ public class LadokController {
     
     public LadokController(){
         courses = new ArrayList();
-     /*   courses.add(new Course("D0031N"));
+        /*
+        courses.add(new Course("D0031N"));
         courses.get(0).addModule("0005");
         courses.get(0).addModule("0006");
         courses.get(0).addGrade(0, "9603169876");
