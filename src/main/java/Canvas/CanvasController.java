@@ -36,9 +36,17 @@ public class CanvasController {
         courses.get(0).setGradeForStudent("simste-6", "Projekta", "VG");
         
         courses.add(new Course("D0025E"));
-        courses.get(1).addStudent("Lukas", "Skog", "luksok-8");
+        courses.get(1).addStudent("Kalle", "Person", "luksok-8");
         courses.get(1).setGradeForStudent("luksok-8", "Inlämningsuppgift1", "U");
         courses.get(1).setGradeForStudent("luksok-8", "Projekt", "VG");
+        
+        courses.get(1).addStudent("Malin", "Eriksson", "luksok-7");
+        courses.get(1).setGradeForStudent("luksok-7", "Inlämningsuppgift1", "VG");
+        courses.get(1).setGradeForStudent("luksok-7", "Projekt", "G");
+        
+        courses.get(1).addStudent("Nina", "Svensson", "luksok-6");
+        courses.get(1).setGradeForStudent("luksok-6", "Inlämningsuppgift1", "G");
+        courses.get(1).setGradeForStudent("luksok-6", "Projekt", "-");
     }
     public Course getCourse(String courseSearch){
         for(Course course: courses){

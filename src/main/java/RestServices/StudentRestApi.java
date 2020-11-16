@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package StudentITS;
+package RestServices;
 
+import StudentITS.Student;
+import StudentITS.StudentController;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -45,15 +47,6 @@ public class StudentRestApi {
         return Response
                 .ok("ping")
                 .build();
-    }
-
-    /**
-     * PUT method for updating or creating an instance of StudentRestApi
-     * @param content representation for the resource
-     */
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void putJson(String content) {
     }
     
     @Path("{student}")

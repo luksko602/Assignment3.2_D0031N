@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Epok;
+package RestServices;
 
+import Epok.EpokController;
+import Epok.Module;
 import java.util.ArrayList;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -47,24 +49,6 @@ public class EpokRestApi {
                 .ok("ping")
                 .build();
     }
-
-    /**
-     * PUT method for updating or creating an instance of EpokRestApi
-     * @param content representation for the resource
-     */
-    @PUT
-    @Consumes(MediaType.APPLICATION_XML)
-    public void putXml(String content) {
-    }
-    
-    @Path("/query")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getCourseModulesQuery(@QueryParam("course") String course){
-         ArrayList<Module> modules = new EpokController().getModules(course);
-         return Response.ok(modules).build();
-    }
-    
 
     @Path("{course}")
     @GET

@@ -14,10 +14,10 @@ import java.util.ArrayList;
 public class test {
     public static void main(String[] args){
         LadokController control = new LadokController();
-       // control.saveAll();
+      //  control.saveAll();
         
         control.readAll();
-        ArrayList<Grade> grades = control.getGrades("D0031N", "0005");
+        ArrayList<Grade> grades = control.getGrades("D0031N", "0006");
         for(Grade grad: grades){
             System.out.println("PNmr: " + grad.getpNmr());
             System.out.println("Betyg: " + grad.getGrade());

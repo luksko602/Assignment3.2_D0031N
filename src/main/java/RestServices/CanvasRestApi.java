@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Canvas;
+package RestServices;
 
+import Canvas.CanvasController;
+import Canvas.Student;
 import java.util.ArrayList;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -45,15 +47,6 @@ public class CanvasRestApi {
         return Response
                 .ok("ping")
                 .build();
-    }
-
-    /**
-     * PUT method for updating or creating an instance of CanvasRestApi
-     * @param content representation for the resource
-     */
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void putJson(String content) {
     }
     
     @Path("{course}")

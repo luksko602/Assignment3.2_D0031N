@@ -13,6 +13,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+
+
 /**
  *
  * @author Lukas
@@ -22,14 +24,13 @@ public class LadokController {
     
     public LadokController(){
         courses = new ArrayList();
-        /*
+        
         courses.add(new Course("D0031N"));
         courses.get(0).addModule("0005");
         courses.get(0).addModule("0006");
         courses.get(0).addGrade(0, "9603169876");
         courses.get(0).addGrade(0, "9205231234");
         courses.get(0).addGrade(0, "9408315678");
-        courses.get(0).addGrade(1, "9603169876");
         courses.get(0).addGrade(1, "9205231234");
         courses.get(0).addGrade(1, "9408315678");
         
@@ -49,7 +50,7 @@ public class LadokController {
         courses.get(2).addModule("0003");      
         courses.get(2).addGrade(0, "9603169876");
         courses.get(2).addGrade(0, "9205231234");
-        courses.get(2).addGrade(0, "9408315678");*/
+        courses.get(2).addGrade(0, "9408315678");
    }
     
     public void saveAll() {
@@ -83,7 +84,7 @@ public class LadokController {
     }
     
     public ArrayList<Grade> getGrades(String courseCode, String moduleCode){
-        this.readAll();
+       // this.readAll();
         for(Course course: courses){
             if(course.getCourseCode().equals(courseCode)){
                  ArrayList<Grade> result = course.getGrades(moduleCode);
@@ -94,11 +95,11 @@ public class LadokController {
     }
     
     public boolean regBetyg(String pNmr, String kursKod,String modul, String date, String grade){
-         this.readAll();
+      //   this.readAll();
         for (Course cor: courses){
            if(cor.getCourseCode().equals(kursKod)){
                Boolean res = cor.regBetyg(pNmr,modul,date,grade);
-               this.saveAll();
+            //   this.saveAll();
                return res;
            }
         }

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Canvas;
+package RestServices;
 
+import Canvas.Message;
 import java.util.ArrayList;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -51,15 +52,6 @@ public class LadokRestApi {
                 .ok("ping")
                 .build();
     }
-
-    /**
-     * PUT method for updating or creating an instance of LadokRestApi
-     * @param content representation for the resource
-     */
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void putJson(String content) {
-    }
     
     @Path("{course}/{module}")
     @GET
@@ -69,29 +61,6 @@ public class LadokRestApi {
         ArrayList<Grade> grades = controller.getGrades(courseCode, module);
         return Response.ok(grades).build();
     }
-    
-    @PUT
-    @Path("/{pNmr}/{course}/{module}/{date}/{grade}")
-    @Consumes("application/xml")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response regBetygPut(
-            @PathParam("pNmr") String pNmr, 
-            @PathParam("course") String courseCode, 
-            @PathParam("module") String module,
-            @PathParam("date") String date,
-            @PathParam("grade") String grade){
-      
-       LadokController controller = new LadokController();
-       Boolean res = controller.regBetyg(pNmr, courseCode, module, date, grade);
-       
-       if (res){
-           return Response.status(javax.ws.rs.core.Response.Status.OK).entity(new Message("Grade pushed successfully") {}).build();
-       }else{
-           return Response.status(javax.ws.rs.core.Response.Status.BAD_REQUEST)
-                            .entity(new Message("Student not found in module"))
-                            .build();
-       }
-}
     
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
